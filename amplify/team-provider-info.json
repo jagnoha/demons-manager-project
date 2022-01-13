@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-demonsmanager-staging-31558-authRole",
+      "UnauthRoleArn": "arn:aws:iam::695119725440:role/amplify-demonsmanager-staging-31558-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::695119725440:role/amplify-demonsmanager-staging-31558-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-demonsmanager-staging-31558-deployment",
+      "UnauthRoleName": "amplify-demonsmanager-staging-31558-unauthRole",
+      "StackName": "amplify-demonsmanager-staging-31558",
+      "StackId": "arn:aws:cloudformation:us-east-1:695119725440:stack/amplify-demonsmanager-staging-31558/f6eb6880-7355-11ec-87a3-0e77f4623ae7",
+      "AmplifyAppId": "d1gondwtcr4etm"
+    }
+  }
+}

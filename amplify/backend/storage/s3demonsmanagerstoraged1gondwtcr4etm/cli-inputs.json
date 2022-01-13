@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3demonsmanagerstoraged1gondwtcr4etm",
+  "bucketName": "demons-manager-storage-d1gondwtcr4etm",
+  "policyUUID": "2aa8ee60",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

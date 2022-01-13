@@ -1,0 +1,181 @@
+type Options {
+  color: String
+  finish: String
+  position: String
+  rise: String
+}
+
+type Attributes {
+  apparelGender: String
+  apparelMaterial: String
+  apparelSize: String
+  apparelSizeSegment: String
+  apparelSizeModifier: String
+  apparelStyle: String
+  batteryCode: String
+  bearingSize: String
+  boltPattern: String
+  bore: String
+  compression: String
+  containerSize: String
+  diameter: String
+  handlebarBlinkers: String
+  handlebarClampingDiameter: String
+  handlebarConfiguration: String
+  handlebarControlColor: String
+  handlebarPullback: String
+  handlebarRise: String
+  handlebarDiameter: String
+  handlebarSwitchColor: String
+  handlebarStyle: String
+  handlebarWidth: String
+  lensStyle: String
+  loadRating: String
+  material: String
+  pitch: String
+  seatStyle: String
+  seatWidthDriver: String
+  seatWidthPassenger: String
+  shape: String
+  sizing: String
+  speed: String
+  springRate: String
+  sprocketPosition: String
+  sprocketTeeth: String
+  sprocketSize: String
+  thickness: String
+  tireApplication: String
+  tireConstruction: String
+  tirePly: String
+  tireRimOffset: String
+  tireSpeedRating: String
+  tireType: String
+  wheelDiameter: String
+  wheelDisc: String
+  wheelSpokeCount: String
+  wheelSpokeFinish: String
+  wheelWidth: String
+}
+
+type Prices {
+  MSRP: Float
+  MAP: Float
+  store: Float
+  ebay: Float
+  amazon: Float
+  wholesaleLow: Float
+  wholesaleHigh: Float
+  scratchLow: Float
+  scratchHigh: Float
+}
+
+type Dimensions {
+  height: Float
+  length: Float
+  width: Float
+}
+
+type ImagesUrlType {
+  image1: String
+  image2: String
+  image3: String
+  image4: String
+  image5: String
+  image6: String
+  image7: String
+  image8: String
+}
+
+type BulletPointsType {
+  bullet1: String
+  bullet2: String
+  bullet3: String
+  bullet4: String
+  bullet5: String
+}
+
+type Description {
+  store: String
+  ebay: String
+  amazon: String
+}
+
+type Title {
+  store: String
+  ebay: String
+  amazon: String
+}
+
+type DistributorsSKU {
+  tucke: String
+  wps: String
+  drag: String
+}
+
+type SourceType {
+  Warehouse: Boolean
+  Dropship: Boolean
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  legacyID: String
+  mpn: String
+  source: SourceType
+  brandID: ID @index(name: "byBrand")
+  manufacturerID: ID @index(name: "byManufacturer")
+  categoryID: ID @index(name: "byCategory")
+  subcategoryID: ID @index(name: "bySubCategory")
+  subcategory2ID: ID @index(name: "bySubCategory2")
+  binLocation: String
+  distributorSKU: DistributorsSKU
+  title: Title
+  description: Description
+  bulletPoints: BulletPointsType
+  imagesURL: ImagesUrlType
+  handle: String
+  weight: Float
+  dimensionalWeight: Float
+  appliedWeight: Float
+  dimensions: Dimensions
+  shopifyFitmentTags: String
+  shopifyOnlyTagsprice: String
+  price: Prices
+  cost: Float
+  attributes: Attributes
+  options: Options
+  updateFlag: Boolean
+  ebayStoreCategoryID: String
+  parentSKU: String
+}
+
+type Manufacturer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Products: [Product] @hasMany(indexName: "byManufacturer", fields: ["id"])
+}
+
+type Brand @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Products: [Product] @hasMany(indexName: "byBrand", fields: ["id"])
+}
+
+type SubCategory2 @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Products: [Product] @hasMany(indexName: "bySubCategory2", fields: ["id"])
+}
+
+type SubCategory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Products: [Product] @hasMany(indexName: "bySubCategory", fields: ["id"])
+}
+
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Products: [Product] @hasMany(indexName: "byCategory", fields: ["id"])
+}
+ 
